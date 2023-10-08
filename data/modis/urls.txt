@@ -1,0 +1,7 @@
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230101.L3b.DAY.POC.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230101.L3m.DAY.POC.poc.4km.nc
+https://oceancolor.gsfc.nasa.gov/showimages/MODISA/IMAGES/POC/L3/2023/0101/AQUA_MODIS.20230101.L3m.DAY.POC.poc.4km.nc.png
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230101.L3b.DAY.POC.NRT.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230101.L3m.DAY.POC.poc.4km.NRT.nc
+https://oceancolor.gsfc.nasa.gov/showimages/MODISA/IMAGES/POC/L3/2023/0101/AQUA_MODIS.20230101.L3m.DAY.POC.poc.4km.NRT.nc.png
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230102.L3b.DAY.POC.nc
