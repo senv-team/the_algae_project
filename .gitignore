@@ -1,6 +1,5 @@
 tmp*
 venv/
-data/
-results/
+
 
 !*.md
