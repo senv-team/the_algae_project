@@ -1,5 +1,4 @@
 tmp*
 venv/
 datasets/
-
-!*.md
+!datasets/*/*.md
