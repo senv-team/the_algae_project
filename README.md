@@ -10,4 +10,6 @@
 
 * all result directories should have the prefix "tmp" - example: "tmp_results_sentinel_v2"
 
+* This is James testing git
+
 * noooooo, James, don't do it!!!
