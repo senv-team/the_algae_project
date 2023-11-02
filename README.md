@@ -9,3 +9,5 @@
 * data_process: code for the actual processing [CODE ONLY]
 
 * all result directories should have the prefix "tmp" - example: "tmp_results_sentinel_v2"
+
+* This is James testing git
