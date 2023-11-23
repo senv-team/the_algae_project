@@ -2,16 +2,14 @@ import netCDF4 as nc
 import numpy as np
 import matplotlib.pyplot as plt
 import geopandas as gpd
+import os
+from datetime import datetime
 
 # read the GeoJSON file
 geojson_file = '../../datasets/modis/snake.geojson'  # replace with your GeoJSON file path
 gdf = gpd.read_file(geojson_file)
 # to zoom into the region covered by the GeoJSON file
 x_min, y_min, x_max, y_max = gdf.total_bounds
-
-# to get this data, go to https://oceancolor.gsfc.nasa.gov/l3/order/
-# select monthly data, 4km resolution, and the mapped option
-# then select the data and time range you want
 
 # possible modes: 
 modes = [
@@ -36,41 +34,49 @@ modes = [
 
 my_data_cropped_list = []
 
-for mode in modes:
-  # read the data
-  data = nc.Dataset(mode["filename"], "r")
+# get a list of all the files a directory which has all the data files
+data_dir = "/gpfs/data/fs70652/jamesm/senv/the_algae_project/datasets/modis"
+# create a list of all the .nc files in the directory
+data_files = [os.path.join(data_dir, file) for file in os.listdir(data_dir) if file.endswith(".nc")]
+# sort the list of files alphabetically
+data_files.sort()
+# parse the start and end date information from the filename (AQUA_MODIS.20210101_20210131.L3m.MO.CHL.chlor_a.4km.nc) of each file
+# and convert it to a datetime object
+start_date = [datetime.strptime(file.split("/")[-1].split(".")[1].split("_")[0], "%Y%m%d") for file in data_files]
+end_date = [datetime.strptime(file.split("/")[-1].split(".")[1].split("_")[1], "%Y%m%d") for file in data_files]
 
-  # read latitude, longitude and poc data
-  latitude = data.variables['lat'][:]
-  longitude = data.variables['lon'][:]
-  my_data = data.variables[mode["type"]][:]
+# create a list of dictionaries containing the filename, start date and end date for each file
+data_files_info = [{"filename": file, "start_date": start, "end_date": end} for file, start, end in zip(data_files, start_date, end_date)]
 
-  # replace fill values with NaN for better plotting
-  fill_value = data.variables[mode["type"]]._FillValue
-  my_data = np.where(my_data == fill_value, np.nan, my_data)
 
-  # set any data below 0 to np.nan
-  my_data = np.where(my_data < 0, np.nan, my_data)
+# specify the start and end dates for the desired date range
+start_date_range = datetime(2021, 1, 1)
+end_date_range = datetime(2022, 12, 31)
 
-  my_data_cropped = my_data[(latitude >= y_min) & (latitude <= y_max), :]
-  my_data_cropped = my_data_cropped[:, (longitude >= x_min) & (longitude <= x_max)]
-  longitude_cropped = longitude[(longitude >= x_min) & (longitude <= x_max)]
-  latitude_cropped = latitude[(latitude >= y_min) & (latitude <= y_max)]
+# filter the data_files_info list based on the date range
+filtered_files_info = [file_info for file_info in data_files_info if start_date_range <= file_info["start_date"] <= end_date_range and start_date_range <= file_info["end_date"] <= end_date_range]
 
-  # plot data
-  plt.figure(figsize=(12, 6))
-  plt.pcolormesh(longitude, latitude, my_data)
-  plt.colorbar(label=mode["description"])
-  plt.xlabel('Longitude (degrees east)')
-  plt.ylabel('Latitude (degrees north)')
-  plt.xlim(x_min, x_max)
-  plt.ylim(y_min, y_max)
-  plt.clim(mode["limits"][0], mode["limits"][1])
-  plt.title(f'MODISA Level-3 Standard Mapped Image for {mode["description"]}')
-  plt.savefig(f'./{mode["type"]}.png')
+print(filtered_files_info)
 
-  # append my_data_cropped to a list
-  my_data_cropped_list.append(my_data_cropped)
+# # loop through the filtered list of files
+# for file_info in filtered_files_info:
+#   # read the data
+#   data = nc.Dataset(file_info["filename"], "r")
+
+#   # rest of the code...
+#   # ...
+
+import sys;sys.exit()
+
+# rest of the code...
+# ...
+plt.ylim(y_min, y_max)
+plt.clim(mode["limits"][0], mode["limits"][1])
+plt.title(f'MODISA Level-3 Standard Mapped Image for {mode["description"]}')
+plt.savefig(f'./{mode["type"]}.png')
+
+# append my_data_cropped to a list
+my_data_cropped_list.append(my_data_cropped)
 
 # calculate the correlation coefficient between the two arrays in the list
 # create a scatter plot of the data from the pixels in each array in the list
