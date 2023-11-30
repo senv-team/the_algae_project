@@ -48,7 +48,6 @@ end_date = [datetime.strptime(file.split("/")[-1].split(".")[1].split("_")[1], "
 # create a list of dictionaries containing the filename, start date and end date for each file
 data_files_info = [{"filename": file, "start_date": start, "end_date": end} for file, start, end in zip(data_files, start_date, end_date)]
 
-
 # specify the start and end dates for the desired date range
 start_date_range = datetime(2021, 1, 1)
 end_date_range = datetime(2022, 12, 31)
@@ -56,12 +55,22 @@ end_date_range = datetime(2022, 12, 31)
 # filter the data_files_info list based on the date range
 filtered_files_info = [file_info for file_info in data_files_info if start_date_range <= file_info["start_date"] <= end_date_range and start_date_range <= file_info["end_date"] <= end_date_range]
 
-print(filtered_files_info)
+# read the data
+successful_loads = 0
+unsuccessful_loads = 0
+# loop through the filtered list of files
+for file_info in filtered_files_info:
+  try:
+    data = nc.Dataset(file_info["filename"], "r")
+    successful_loads += 1
+  except:
+    unsuccessful_loads += 1
 
-# # loop through the filtered list of files
-# for file_info in filtered_files_info:
-#   # read the data
-#   data = nc.Dataset(file_info["filename"], "r")
+# Print the number of successful and unsuccessful loads
+print(f"Successful loads: {successful_loads}")
+print(f"Unsuccessful loads: {unsuccessful_loads}")
+
+import sys;sys.exit()
 
 #   # rest of the code...
 #   # ...
