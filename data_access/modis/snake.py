@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import geopandas as gpd
 import os
 from datetime import datetime
+from tqdm import tqdm
 
 # read the GeoJSON file
 geojson_file = '../../datasets/modis/snake.geojson'  # replace with your GeoJSON file path
@@ -58,17 +59,65 @@ filtered_files_info = [file_info for file_info in data_files_info if start_date_
 # read the data
 successful_loads = 0
 unsuccessful_loads = 0
+data_list = []
+
 # loop through the filtered list of files
 for file_info in filtered_files_info:
   try:
     data = nc.Dataset(file_info["filename"], "r")
     successful_loads += 1
+    data_list.append({"data": data, "start_date": file_info["start_date"], "end_date": file_info["end_date"]}) # store the loaded data, start date, and end date in the list
   except:
     unsuccessful_loads += 1
 
 # Print the number of successful and unsuccessful loads
 print(f"Successful loads: {successful_loads}")
 print(f"Unsuccessful loads: {unsuccessful_loads}")
+
+data_crop_list = []
+# loop through all the data, and crop it to the region of interest
+for data_info in data_list:
+  # read latitude and longitude data
+  latitude = data_info["data"]["lat"][:]
+  longitude = data_info["data"]["lon"][:]
+
+  # read the chlorophyll data
+  chlor_a = data_info["data"]["chlor_a"][:]
+
+  # replace fill values with NaN for better plotting
+  fill_value = data_info["data"]["chlor_a"]._FillValue
+  chlor_a[chlor_a == fill_value] = np.nan
+
+  # set any data below 0 to NaN
+  chlor_a[chlor_a < 0] = np.nan
+
+  # crop the data to the region of interest
+  chlor_a_crop = chlor_a[(latitude >= y_min) & (latitude <= y_max), :]
+  chlor_a_crop = chlor_a_crop[:, (longitude >= x_min) & (longitude <= x_max)]
+  longitude_crop = longitude[(longitude >= x_min) & (longitude <= x_max)]
+  latitude_crop = latitude[(latitude >= y_min) & (latitude <= y_max)]
+
+  # append the cropped data to a list
+  data_crop_list.append({"data": chlor_a_crop, "start_date": data_info["start_date"], "end_date": data_info["end_date"], "latitude": latitude_crop, "longitude": longitude_crop})
+
+# make a new directory if it doesn't exist, and loop through all the cropped data and put images in there
+if not os.path.exists("./images"):
+  os.mkdir("./images")
+for data_info in tqdm(data_crop_list, desc="Making images"):
+  # create a figure
+  plt.figure(figsize=(12, 6))
+  # plot the data
+  plt.pcolormesh(data_info["longitude"], data_info["latitude"], data_info["data"], shading="auto")
+  # set the x and y limits
+  plt.xlim(x_min, x_max)
+  plt.ylim(y_min, y_max)
+  # set the colour limits
+  plt.clim(0, 0.25)
+  # set the title
+  plt.title(f'MODISA Level-3 Standard Mapped Image for {data_info["start_date"].strftime("%Y-%m-%d")} to {data_info["end_date"].strftime("%Y-%m-%d")}')
+  # save the figure
+  plt.savefig(f'./images/{data_info["start_date"].strftime("%Y-%m-%d")}_{data_info["end_date"].strftime("%Y-%m-%d")}.png')
+  plt.close()
 
 import sys;sys.exit()
 
