@@ -1,6 +1,7 @@
 tmp*
 venv/
 
+example*
 
 datasets/*/*
 !datasets/*/README.md
