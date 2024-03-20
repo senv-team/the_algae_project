@@ -1,0 +1,11 @@
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230201_20230228.L3m.MO.CHL.chlor_a.4km.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230301_20230331.L3m.MO.CHL.chlor_a.4km.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230401_20230430.L3m.MO.CHL.chlor_a.4km.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230501_20230531.L3m.MO.CHL.chlor_a.4km.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230601_20230630.L3m.MO.CHL.chlor_a.4km.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230701_20230731.L3m.MO.CHL.chlor_a.4km.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230801_20230831.L3m.MO.CHL.chlor_a.4km.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20230901_20230930.L3m.MO.CHL.chlor_a.4km.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20231001_20231031.L3m.MO.CHL.chlor_a.4km.NRT.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20231101_20231130.L3m.MO.CHL.chlor_a.4km.NRT.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20231201_20231231.L3m.MO.CHL.chlor_a.4km.NRT.nc
