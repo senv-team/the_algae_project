@@ -6,6 +6,10 @@ example*
 datasets/*/*
 !datasets/*/README.md
 
+data_process/correlation/plots/
+data_process/correlation/locs/
+*.png
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
