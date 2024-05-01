@@ -1,15 +1,41 @@
-# Algae project!! 
+# Algae Project
 
-* datasets: data should be stored in the datasets dir. this will not be pushed to github. everyone has it local (part of .gitignore)
+This project is structured into several parts, each with its own specific role:
 
-* data_access: code for accessing data [CODE ONLY]
+- **Datasets**: All data should be stored in the `datasets` directory. This data will not be pushed to GitHub as it is part of the `.gitignore` file. Everyone should have this data locally.
 
-* data_explore: code for "exploratory data analysis" - can include plotting data, looking for missing data, ... [CODE ONLY]
+- **Data Access**: This part contains the code for accessing the data. It is a code-only section.
 
-* data_process: code for the actual processing [CODE ONLY]
+- **Data Exploration**: This part includes the code for exploratory data analysis. It can include tasks such as plotting data, looking for missing data, etc. This is also a code-only section.
 
-* all result directories should have the prefix "tmp" - example: "tmp_results_sentinel_v2"
+- **Data Processing**: This part contains the code for the actual data processing. It is a code-only section.
 
-* This is James testing git
+- **Results**: All result directories should have the prefix "tmp". For example: "tmp_results_sentinel_v2".
 
-* noooooo, James, don't do it!!!
+## Setting Up the Virtual Environment
+
+To set up the virtual environment for this project, follow these steps:
+
+1. Install `virtualenv`:
+
+    ```shell
+    pip install virtualenv
+    ```
+
+1. Create a virtual environment:
+
+    ```shell
+    virtualenv .venv
+    ```
+
+1. Activate the virtual environment:
+
+    ```shell
+    source .venv/bin/activate
+    ```
+
+1. Install the required packages:
+
+    ```shell
+    pip install -r requirements.txt
+    ```
