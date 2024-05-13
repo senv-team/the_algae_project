@@ -1,0 +1,4 @@
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20231203_20231210.L3m.8D.POC.poc.4km.NRT.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20231211_20231218.L3m.8D.POC.poc.4km.NRT.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20231219_20231226.L3m.8D.POC.poc.4km.NRT.nc
+https://oceandata.sci.gsfc.nasa.gov/cgi/getfile/AQUA_MODIS.20231227_20231231.L3m.8D.POC.poc.4km.NRT.nc
