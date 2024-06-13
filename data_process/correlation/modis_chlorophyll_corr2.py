@@ -49,7 +49,7 @@ def plot_time_series(data_series, region_name):
     plt.savefig(f"./plots/{region_name}/time_series.png")
     plt.close()
 
-def write_to_csv(data_series, region_name): ### NOT WORKING CORRECTLY ###
+def write_to_csv(data_series, region_name):
     try:
         valid_data_series = [d for d in data_series if 'start_date' in d and 'end_date' in d and d['data'].size > 0]
 
@@ -57,27 +57,31 @@ def write_to_csv(data_series, region_name): ### NOT WORKING CORRECTLY ###
             print(f"No valid data to process for {region_name}.")
             return
 
-        # Create an empty DataFrame indexed by the entire range of years from the data
-        year_range = pd.date_range(start=min(d['start_date'] for d in valid_data_series).year, 
-                                   end=max(d['end_date'] for d in valid_data_series).year, 
-                                   freq='A')
-        df = pd.DataFrame(index=year_range.year, columns=pd.date_range('2000-01-01', '2004-12-31', freq='M').strftime('%b'))
+        # Define columns as just the months in a single year
+        months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+        # Create an empty DataFrame with years as index and months as columns
+        years = sorted(set([d['start_date'].year for d in valid_data_series]))
+        df = pd.DataFrame(index=years, columns=months)
 
         for entry in valid_data_series:
             data_copy = np.array(entry['data']).copy()
-            mean_value = np.nanmean(data_copy)
+            mean_value = np.nanmean(data_copy) if np.any(~np.isnan(data_copy)) else np.nan
             month = entry['start_date'].strftime('%b')
             year = entry['start_date'].year
             # Set the mean value at the correct year and month
             df.at[year, month] = mean_value
 
-        # Remove any rows that are entirely NaN, which might happen if no data is available for that year
+        # Remove any rows that are entirely NaN
         df.dropna(how='all', inplace=True)
 
+        # Ensure directory exists
         os.makedirs(f"./data_csv/{region_name}", exist_ok=True)
+
         # Save to CSV
-        df.to_csv(f"./data_csv/{region_name}/chlorophyll_monthly_means_{region_name}.csv")
-        print(f"CSV file created for {region_name}")
+        csv_path = f"./data_csv/{region_name}/chlorophyll_monthly_means_{region_name}.csv"
+        df.to_csv(csv_path)
+        print(f"CSV file created for {region_name} at {csv_path}")
     except Exception as e:
         print(f"Failed to process data for {region_name}. Error: {e}")
 
@@ -99,7 +103,7 @@ start_date = [datetime.strptime(file.split("/")[-1].split(".")[1].split("_")[0],
 end_date = [datetime.strptime(file.split("/")[-1].split(".")[1].split("_")[1], "%Y%m%d") for file in data_files]
 data_files_info = [{"filename": file, "start_date": start, "end_date": end} for file, start, end in zip(data_files, start_date, end_date)]
 start_date_range = datetime(2000, 1, 1)
-end_date_range = datetime(2003, 1, 1)
+end_date_range = datetime(2005, 1, 1)
 
 filtered_files_info = [file_info for file_info in data_files_info if start_date_range <= file_info["start_date"] <= end_date_range and start_date_range <= file_info["end_date"] <= end_date_range]
 successful_loads = 0
@@ -135,7 +139,7 @@ for data_info in tqdm(data_list, desc='Cropping data to region of interest'):
 for region_name, data_series in time_series_data.items():
 
     os.makedirs(f"./plots/{region_name}", exist_ok=True)
-    plot_time_series(data_series, region_name)
+    # plot_time_series(data_series, region_name)
     write_to_csv(data_series, region_name)
 
 del data_list
