@@ -80,7 +80,7 @@ def write_to_csv(data_series, region_name):
 
         # Save to CSV
         csv_path = f"./data_csv/{region_name}/chlorophyll_monthly_means_{region_name}.csv"
-        df.to_csv(csv_path)
+        df.to_csv(csv_path, index_label='year')
         print(f"CSV file created for {region_name} at {csv_path}")
     except Exception as e:
         print(f"Failed to process data for {region_name}. Error: {e}")
@@ -102,8 +102,8 @@ data_files.sort()
 start_date = [datetime.strptime(file.split("/")[-1].split(".")[1].split("_")[0], "%Y%m%d") for file in data_files]
 end_date = [datetime.strptime(file.split("/")[-1].split(".")[1].split("_")[1], "%Y%m%d") for file in data_files]
 data_files_info = [{"filename": file, "start_date": start, "end_date": end} for file, start, end in zip(data_files, start_date, end_date)]
-start_date_range = datetime(2000, 1, 1)
-end_date_range = datetime(2005, 1, 1)
+start_date_range = datetime(1990, 1, 1)
+end_date_range = datetime(2030, 1, 1)
 
 filtered_files_info = [file_info for file_info in data_files_info if start_date_range <= file_info["start_date"] <= end_date_range and start_date_range <= file_info["end_date"] <= end_date_range]
 successful_loads = 0
