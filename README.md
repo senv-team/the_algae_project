@@ -1,7 +1,8 @@
 # Explore underlying factors of climate change
 
-This project is structured into several parts, each with its own specific role:
 
+## Directory Structure
+This project is structured into several parts, each with its own specific role:
 
 - **Code Mining**: This part contains the code for accessing, cleaning and converting the data to a csv file, stored in `datasets`. Code-only section.
 
@@ -13,7 +14,7 @@ This project is structured into several parts, each with its own specific role:
 
 - **Results**: All result/plot directories should have the prefix "tmp". For example: `tmp_results_sentinel_v2`. Everyone should have this locally. No code here.
 
-## Setting Up the Virtual Environment
+## irectory Structure
 
 To set up the virtual environment for this project, follow these steps:
 
