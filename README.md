@@ -1,16 +1,18 @@
-# Algae Project
+# Explore underlying factors of climate change
 
+
+## Directory Structure
 This project is structured into several parts, each with its own specific role:
 
-- **Datasets**: All data should be stored in the `datasets` directory. This data will not be pushed to GitHub as it is part of the `.gitignore` file. Everyone should have this data locally.
+- **Code for Mining**: This part contains the code for accessing, cleaning and converting the data to a csv file, stored in `datasets`. Code-only section.
 
-- **Data Access**: This part contains the code for accessing the data. It is a code-only section.
+- **Code for Processing**: This part contains the code for the actual data processing. Make sure not to access data outside the `datasets` directory. If you need additional data, it should be downloaded/cleaned/converted in the `data_mining` directory and saved in the `datasets` directory. Code-only section.
 
-- **Data Exploration**: This part includes the code for exploratory data analysis. It can include tasks such as plotting data, looking for missing data, etc. This is also a code-only section.
+- **Code for Visualising**: This part contains the code for visualisations. The code should access result csv files from the `results` directory or `datasets` directory. Code-only section.
 
-- **Data Processing**: This part contains the code for the actual data processing. It is a code-only section.
+- **Datasets**: All data should be stored in the `datasets` directory. This data will not be pushed to GitHub as it is part of the `.gitignore` file. Everyone should have this locally. No code here.
 
-- **Results**: All result directories should have the prefix "tmp". For example: "tmp_results_sentinel_v2".
+- **Results**: All result/plot directories should have the prefix "tmp". For example: `tmp_results_sentinel_v2`. Everyone should have this locally. No code here.
 
 ## Setting Up the Virtual Environment
 
