@@ -14,7 +14,7 @@ This project is structured into several parts, each with its own specific role:
 
 - **Results**: All result/plot directories should have the prefix "tmp". For example: `tmp_results_sentinel_v2`. Everyone should have this locally. No code here.
 
-## irectory Structure
+## Setting Up the Virtual Environment
 
 To set up the virtual environment for this project, follow these steps:
 
