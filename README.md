@@ -4,11 +4,11 @@
 ## Directory Structure
 This project is structured into several parts, each with its own specific role:
 
-- **Code Mining**: This part contains the code for accessing, cleaning and converting the data to a csv file, stored in `datasets`. Code-only section.
+- **Code for Mining**: This part contains the code for accessing, cleaning and converting the data to a csv file, stored in `datasets`. Code-only section.
 
-- **Code Processing**: This part contains the code for the actual data processing. Make sure not to access data outside the `datasets` directory. If you need additional data, it should be downloaded/cleaned/converted in the `data_mining` directory and saved in the `datasets` directory. Code-only section.
+- **Code for Processing**: This part contains the code for the actual data processing. Make sure not to access data outside the `datasets` directory. If you need additional data, it should be downloaded/cleaned/converted in the `data_mining` directory and saved in the `datasets` directory. Code-only section.
 
-- **Code Visualising**: This part contains the code for visualisations. The code should access result csv files from the `results` directory or `datasets` directory. Code-only section.
+- **Code for Visualising**: This part contains the code for visualisations. The code should access result csv files from the `results` directory or `datasets` directory. Code-only section.
 
 - **Datasets**: All data should be stored in the `datasets` directory. This data will not be pushed to GitHub as it is part of the `.gitignore` file. Everyone should have this locally. No code here.
 
