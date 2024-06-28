@@ -1,15 +1,43 @@
-# Algae project!! 
+# Explore underlying factors of climate change
 
-* datasets: data should be stored in the datasets dir. this will not be pushed to github. everyone has it local (part of .gitignore)
 
-* data_access: code for accessing data [CODE ONLY]
+## Directory Structure
+This project is structured into several parts, each with its own specific role:
 
-* data_explore: code for "exploratory data analysis" - can include plotting data, looking for missing data, ... [CODE ONLY]
+- **Code for Mining**: This part contains the code for accessing, cleaning and converting the data to a csv file, stored in `datasets`. Code-only section.
 
-* data_process: code for the actual processing [CODE ONLY]
+- **Code for Processing**: This part contains the code for the actual data processing. Make sure not to access data outside the `datasets` directory. If you need additional data, it should be downloaded/cleaned/converted in the `data_mining` directory and saved in the `datasets` directory. Code-only section.
 
-* all result directories should have the prefix "tmp" - example: "tmp_results_sentinel_v2"
+- **Code for Visualising**: This part contains the code for visualisations. The code should access result csv files from the `results` directory or `datasets` directory. Code-only section.
 
-* This is James testing git
+- **Datasets**: All data should be stored in the `datasets` directory. This data will not be pushed to GitHub as it is part of the `.gitignore` file. Everyone should have this locally. No code here.
 
-* noooooo, James, don't do it!!!
+- **Results**: All result/plot directories should have the prefix "tmp". For example: `tmp_results_sentinel_v2`. Everyone should have this locally. No code here.
+
+## Setting Up the Virtual Environment
+
+To set up the virtual environment for this project, follow these steps:
+
+1. Install `virtualenv`:
+
+    ```shell
+    pip install virtualenv
+    ```
+
+1. Create a virtual environment:
+
+    ```shell
+    virtualenv .venv
+    ```
+
+1. Activate the virtual environment:
+
+    ```shell
+    source .venv/bin/activate
+    ```
+
+1. Install the required packages:
+
+    ```shell
+    pip install -r requirements.txt
+    ```
