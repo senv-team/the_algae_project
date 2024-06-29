@@ -1,3 +1,5 @@
 * Everyone should have this locally. 
-* Make sure to follow the naming convention of directories. Example: For example: `tmp_sentinel`. With prefix `tmp`, directory will not be stored on GitHub (see .gitignore).
+* Save files in sub-directories.
+* csv should include all numeric data, including the ones derived from satellites
+* satellite dirs may save raw data/images.
 * No code here.
