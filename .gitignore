@@ -1,14 +1,19 @@
-tmp*
-venv/
+# readme file should never be ignored
+!README.md
 
+# prefix
+tmp*
 example*
 
-datasets/*/*
-!datasets/*/README.md
-
-data_process/correlation/plots/
-data_process/correlation/locs/
+# postfix
 *.png
+
+# dirs
+venv/*
+datasets/*
+results/*
+
+
 
 
 # Byte-compiled / optimized / DLL files
