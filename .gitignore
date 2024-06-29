@@ -10,10 +10,13 @@ example*
 
 # dirs
 venv/*
-datasets/*
-results/*
+
+datasets/*/*
 !datasets/*/README.md
+
+results/*/*
 !results/*/README.md
+
 
 
 
