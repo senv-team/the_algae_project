@@ -12,7 +12,8 @@ example*
 venv/*
 datasets/*
 results/*
-
+!datasets/*/README.md
+!results/*/README.md
 
 
 
