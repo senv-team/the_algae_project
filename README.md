@@ -1,6 +1,5 @@
 # Explore underlying factors of climate change
 
-
 ## Directory Structure
 This project is structured into several parts, each with its own specific role:
 
@@ -10,11 +9,13 @@ This project is structured into several parts, each with its own specific role:
 
 - **Code for Visualising**: This part contains the code for visualisations. The code should access result csv files from the `results` directory or `datasets` directory. Code-only section.
 
-- **Datasets**: All data should be stored in the `datasets` directory and should have the prefix "tmp". For example: `tmp_sentinel`. Everyone should have this locally. No code here.
+- **Datasets**: All data be stored in a sub-directory of `datasets`. Everyone should have this locally, `.gitignore` file handles this. No code here.
 
-- **Results**: All result/plot directories should have the prefix "tmp". For example: `tmp_sentinel`. Everyone should have this locally. No code here.
+- **Locs**: All the geojson files of positions
 
-Directories with prefix "tmp" will not be pushed to GitHub as it is part of the `.gitignore` file.
+- **Results**: All results/plots should be stored in a sub-directory of `results`. Everyone should have this locally, `.gitignore` file handles this. No code here. 
+
+Directories with prefix "tmp" will not be pushed to GitHub, see `.gitignore` file.
 
 ## Setting Up the Virtual Environment
 
