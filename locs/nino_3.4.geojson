@@ -1,0 +1,23 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Nino 3.4 Region"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-170, 5],
+            [-120, 5],
+            [-120, -5],
+            [-170, -5],
+            [-170, 5]
+          ]
+        ]
+      }
+    }
+  ]
+}

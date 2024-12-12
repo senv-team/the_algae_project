@@ -10,8 +10,11 @@ This project is structured into several parts, each with its own specific role:
 - **Code for Visualising**: This part contains the code for visualisations. The code should access result csv files from the `results` directory or `datasets` directory. Code-only section.
 
 - **Datasets**: All data be stored in a sub-directory of `datasets`. Everyone should have this locally, `.gitignore` file handles this. No code here.
+<<<<<<< HEAD
 
 - **Locs**: All the geojson files of positions
+=======
+>>>>>>> cde1471d5ef5e779bba0eb937ddb0f6f26cba051
 
 - **Results**: All results/plots should be stored in a sub-directory of `results`. Everyone should have this locally, `.gitignore` file handles this. No code here. 
 
